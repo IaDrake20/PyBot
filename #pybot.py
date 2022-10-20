@@ -28,7 +28,7 @@ async def on_message(message):
     if message.content.startswith('$hello'):
         await message.channel.send('Hello!')
 
-#        
+#scrape first results from google search for image of what user wants        
 @client.event
 async def on_mesage(message):       
     if message.content.startswith('$Find '):
@@ -76,12 +76,18 @@ async def scheduler(message):
         msg = seperated_message[3] 
         
         @tasks.loop(hours= time_h)
-        if "day" in time_dw:
-            async def called_once_a_day():
-            message_channel = bot.get_channel(target_channel_id)
-            print(f"Got channel {message_channel}")
-            await message_channel.send(msg)
+        
+        #if "day" in time_dw:
+        #    async def called_once_a_day():
+        #        message_channel = bot.get_channel(target_channel_id)
+        #        print(f"Got channel {message_channel}")
+        #        await message_channel.send(msg)
+        if "week" in time_dw:
+            async def called_once_a_week():
+                message_channel = bot.get_channel(target_channel_id)
+                print(f"Got channel {message_channel}")
+                await message_channel.send(msg)
             
             
 
-client.run('MTAzMjM5ODc3MzE4MTIyNzAwOA.GS_z-I.ga5jGNrDJDcDM-_cwDgpth-5wYqxlP7ic39_9o')
+client.run('MTAzMjM5ODc3MzE4MTIyNzAwOA.GznsaI.ZgElT5HaBzTsxTAYb8dz8JXV-t4gFitIiZTpqo')
